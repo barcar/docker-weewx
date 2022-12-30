@@ -1,0 +1,22 @@
+version: "3.5"
+services:
+  weewx:
+    container_name: weewx
+    build: .
+    pull_policy: build
+    volumes:
+      - weewx_data:/mnt/weewx-data
+      - /etc/localtime:/etc/localtime:ro
+      - /var/lib/docker/volumes/weewx_data/_data/weewx.conf:/home/weewx/weewx.conf
+      - /var/lib/docker/volumes/weewx_data/_data/archive:/home/weewx/archive
+      - /var/lib/docker/volumes/weewx_data/_data/public_html:/home/weewx/public_html
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+    environment:
+      - TZ=Europe/London
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+volumes:
+  weewx_data:
+    external: true

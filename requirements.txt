@@ -1,0 +1,12 @@
+pip
+configobj
+pillow
+serial
+usb
+Cheetah3
+
+# Optional: for extended almanac information
+ephem
+
+# Required if you are using MySQL (MariaDB):
+#mysqldb
