@@ -10,3 +10,6 @@ ephem
 
 # Required if you are using MySQL (MariaDB):
 #mysqldb
+
+# Required for MQTT
+paho-mqtt
