@@ -19,8 +19,10 @@ RUN apt-get update && \
     cd /tmp/setup && \
     curl -SL -o gw1000-${GW1000_VERSION}.tar.gz https://github.com/gjr80/weewx-gw1000/releases/download/v${GW1000_VERSION}/gw1000-${GW1000_VERSION}.tar.gz && \
     /home/weewx/bin/wee_extension --install=/tmp/setup/gw1000-${GW1000_VERSION}.tar.gz && \
+    curl -SL -o weewx-mqtt.zip https://github.com/matthewwall/weewx-mqtt/archive/master.zip && \
+    /home/weewx/bin/wee_extension --install=/tmp/setup/weewx-mqtt.zip && \
     rm -rf /tmp/setup /var/lib/apt/lists/* /tmp/* /var/tmp/* 
-
+    
 WORKDIR /home/weewx
 
 CMD [ "python", "./bin/weewxd", "./weewx.conf" ]
